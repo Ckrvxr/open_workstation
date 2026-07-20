@@ -36,7 +36,7 @@
     "exa": {
       "type": "remote",
       "url": "https://mcp.exa.ai/mcp",
-      "enabled": true,
+      "enabled": false,
       "headers": {
         "x-api-key": "{env:EXA_API_KEY}"
       }
@@ -49,28 +49,20 @@
         "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
     },
-    "officecli": {
-      "type": "local",
-      "command": [
-        "officecli",
-        "mcp"
-      ],
-      "enabled": true
-    },
     "playwright": {
       "type": "local",
       "command": ["npx", "-y", "@playwright/mcp@latest"],
       "enabled": true
     },
-    "scholar-search": {
-      "type": "local",
-      "command": ["/home/cute/.local/share/opencode-venvs/scholar-search/bin/python", "-m", "scholar_search_mcp"],
-      "enabled": false,
-      "env": {
-        "SCHOLAR_SEARCH_ENABLE_SEMANTIC_SCHOLAR": "true",
-        "SCHOLAR_SEARCH_ENABLE_ARXIV": "true"
-      }
-    },
+    // "scholar-search": {
+    //   "type": "local",
+    //   "command": ["/home/cute/.local/share/opencode-venvs/scholar-search/bin/python", "-m", "scholar_search_mcp"],
+    //   "enabled": false,
+    //   "env": {
+    //     "SCHOLAR_SEARCH_ENABLE_SEMANTIC_SCHOLAR": "true",
+    //     "SCHOLAR_SEARCH_ENABLE_ARXIV": "true"
+    //   }
+    // },
     "academix": {
       "type": "local",
       "command": ["academix"],
@@ -78,6 +70,10 @@
       "env": {
         "ACADEMIX_EMAIL": "{env:OPENALEX_EMAIL}"
       }
+    },
+    "open-computer-use": {
+      "type": "local",
+      "command": ["open-computer-use", "mcp"]
     }
   },
   "permission": {
