@@ -2,11 +2,7 @@
 
 1. 像 Grok AI 一样使用多轮搜索，尽量获取全面详尽的信息。
 2. 优先使用搜索 websearch 和抓取 webfetch。
-3. 普通搜索与抓取无法获得内容时，再使用 Playwright MCP。
-
-   1. 同一任务只维护一个 Playwright 实例，完成后关闭。
-   2. Playwright 环境已准备好，不要重复初始化。
-   3. 遇到付费墙、验证码、登录或访问控制；先请求用户登录，如果登录不了或用户没有权限，改找预印本、机构仓储或公开摘要。
+3. 普通搜索与抓取（webfetch/exa_web_fetch_exa）无法获得内容时，使用 Playwright MCP 直接浏览页面。
 
 4. 学术搜索使用 Academix MCP。
 5. 搜索或对比对象较多的时候，要分开搜索。
@@ -20,6 +16,53 @@
 
 7. 重要结论应交叉验证；来源冲突时明确说明。
 8. 找不到可靠信息时，明确说明不确定性，不编造结果。
+
+## Playwright MCP 浏览器自动化
+
+Playwright MCP 已配置在本地（`@playwright/mcp@latest`），通过 accessibility tree（不是截图）与页面交互。
+
+### 核心工作流
+
+```
+browser_navigate(url) → browser_snapshot() → 取 ref → 操作(ref) → browser_snapshot() 验证
+```
+
+每次 `snapshot` 返回元素的 ref（如 `e5`、`e12`），后续用 ref 操作。页面变化后必须重新 snapshot。
+
+### 操作速查
+
+| 工具 | 场景 |
+|------|------|
+| `browser_navigate` | 打开页面 |
+| `browser_snapshot` | 获取 accessibility tree + 元素 ref |
+| `browser_click` | 点击（ref 或选择器） |
+| `browser_type` | 逐键输入（触发 JS 事件） |
+| `browser_fill_form` | 一次填充多个字段（省 token） |
+| `browser_select_option` | 下拉框 |
+| `browser_take_screenshot` | 截图取证/调试 |
+| `browser_wait_for` | 等文本出现/消失/等指定时间 |
+| `browser_tabs` | 多标签管理 |
+| `browser_handle_dialog` | 处理 alert/confirm/prompt |
+| `browser_console_messages` | 看控制台日志 |
+| `browser_network_requests` | 查看网络请求 |
+| `browser_route` / `browser_unroute` | Mock API |
+| `browser_evaluate` | 执行 JS（需要时再用） |
+| `browser_file_upload` | 上传文件 |
+| `browser_press_key` | 按键盘键 |
+| `browser_hover` | 悬停 |
+| `browser_drag` | 拖拽 |
+| `browser_resize` | 调整窗口 |
+
+### 规则
+
+1. **同一任务只维护一个 Playwright 实例**，完成后关闭。
+2. Playwright 环境已准备好，不要重复初始化。
+3. **ref 只在当前 snapshot 有效**，页面变化后必须重新 snapshot。
+4. **填表优先用 `browser_fill_form`** 一次填多个字段，比逐个 `type` 省 token。
+5. **避免固定等待**（`browser_wait_for` 等秒数），优先等文本/元素出现。
+6. **调试步骤**：`browser_take_screenshot` + `browser_console_messages` + `browser_network_requests` 三步取证。
+7. **遇到验证码/付费墙/登录**：先请求用户登录，如果登录不了或用户没有权限，改找预印本、机构仓储或公开摘要。
+8. **需要抓取 GitHub raw 内容**时，`webfetch` 可能超时，改用 `exa_web_fetch_exa` 或 `curl`。
 
 ## Context7
 
