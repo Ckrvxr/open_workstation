@@ -16,14 +16,14 @@
       ],
       "enabled": true
     },
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "enabled": true,
-      "headers": {
-        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-      }
-    },
+    // "context7": {
+    //   "type": "remote",
+    //   "url": "https://mcp.context7.com/mcp",
+    //   "enabled": true,
+    //   "headers": {
+    //     "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+    //   }
+    // },
     "engram": {
       "command": [
         "/home/linuxbrew/.linuxbrew/bin/engram",
@@ -33,39 +33,37 @@
       "enabled": true,
       "type": "local"
     },
-    "exa": {
-      "type": "remote",
-      "url": "https://mcp.exa.ai/mcp",
-      "enabled": false,
-      "headers": {
-        "x-api-key": "{env:EXA_API_KEY}"
-      }
-    },
+    // "exa": {
+    //   "type": "remote",
+    //   "url": "https://mcp.exa.ai/mcp",
+    //   "enabled": false,
+    //   "headers": {
+    //     "x-api-key": "{env:EXA_API_KEY}"
+    //   }
+    // },
     "github": {
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
       "enabled": true,
       "headers": {
-        "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+        "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}",
+        "X-MCP-Toolsets": "default,actions"
       }
     },
     "playwright": {
       "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp@latest"],
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest"
+      ],
       "enabled": true
     },
-    // "scholar-search": {
-    //   "type": "local",
-    //   "command": ["/home/cute/.local/share/opencode-venvs/scholar-search/bin/python", "-m", "scholar_search_mcp"],
-    //   "enabled": false,
-    //   "env": {
-    //     "SCHOLAR_SEARCH_ENABLE_SEMANTIC_SCHOLAR": "true",
-    //     "SCHOLAR_SEARCH_ENABLE_ARXIV": "true"
-    //   }
-    // },
     "academix": {
       "type": "local",
-      "command": ["academix"],
+      "command": [
+        "academix"
+      ],
       "enabled": true,
       "env": {
         "ACADEMIX_EMAIL": "{env:OPENALEX_EMAIL}"
@@ -73,7 +71,20 @@
     },
     "open-computer-use": {
       "type": "local",
-      "command": ["open-computer-use", "mcp"]
+      "command": [
+        "open-computer-use",
+        "mcp"
+      ]
+    },
+    "docker": {
+      "type": "local",
+      "command": [
+        "/home/cute/.local/share/pnpm/bin/docker-mcp"
+      ],
+      "environment": {
+        "DOCKER_MCP_LOCAL": "true"
+      },
+      "enabled": true
     }
   },
   "permission": {
