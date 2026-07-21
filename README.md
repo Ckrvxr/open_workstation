@@ -14,15 +14,16 @@
 |---|---|---|
 | 💻 代码编写与重构 | OpenCode + AGENTS.md 宪法约束 | 超强自主代码能力 |
 | 🌐 浏览器自动化 | Playwright MCP + Browser Sub-Agent | 超强自愈浏览器使用能力 |
-| 🐙 GitHub 全操作 | GitHub MCP (Copilot 接口) | 不再报错，自动处理 PR/Issue 等 |
-| 📖 学术搜索 | Academix MCP (OpenAlex / DBLP / Semantic Scholar) | 一键查询论文、引文网络、文献导出 |
-| 🧠 持久化记忆 | Engram MCP | session 间记忆不丢失，持续积累上下文 |
-| 🖱️ 桌面 GUI 操作 | Open Computer Use MCP | 直接操控桌面应用，调试 GUI 程序 |
-| 📦 隔离环境 | Docker MCP (Debian 容器) | 不污染宿主机，随用随建 |
+| 🐙 GitHub 全操作 | GitHub MCP (Copilot 接口) | 不再报错，自动处理 PR/Issue  |
+| 📖 神经网络搜索 | Exa MCP | 信息实时可靠、搜索迅速，大幅减少上下文消耗 |
+| 📖 学术搜索 | Academix MCP | 查询学术论文、引文网络、权威可靠 |
+| 🧠 持久化记忆 | Engram MCP | 持续积累项目管理经验 |
+| 🖱️ 桌面 GUI 操作 | Open Computer Use MCP | 直接操控桌面应用，全自动 loop 开发调试 GUI 程序 |
+| 📦 隔离环境 | Docker MCP | 不污染宿主机，解决 Root 权限问题 |
 | ⏳ 后台任务 | Background Process MCP | 管理 dev server / 长时间下载 |
+| 📊 配额监控 | opencode-quota plugin  | 实时查看 Token 消耗与余额 |
+| 🔒 密钥保护 | opencode-secret-redactor plugin | 自动拦截密钥泄漏 |
 | 🎓 费曼学习法 | Feynman Skill | AI 陪你查漏补缺，直到真正掌握 |
-| 📊 配额监控 | opencode-quota 插件 | 实时查看 Token 消耗与余额 |
-| 🔒 密钥保护 | secret-redactor 插件 | 自动拦截密钥泄漏到对话历史 |
 
 ## 📂 结构
 
