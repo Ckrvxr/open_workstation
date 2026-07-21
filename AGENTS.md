@@ -22,11 +22,11 @@
 10. C/C++ 规范：
     - RAII
     - 嵌入式禁止动态内存
-    - 优先 C++23 现代语法
+    - 优先 C/C++23 现代语法
     - 优先 `vector`
-    - 优先定宽类型
+    - 优先定宽类型，如 `int32_t`、`uint16_t` 等。
     - 常量优先级：`enum` > `constexpr` > `#define`
-    - 使用 `#pragma once`
+    - 优先使用 import 和 module ，`#pragma once`
     - 循环用 `i`、`j`、`k`
 11. 优先使用 `pacman`、`uv`、`pnpm`、`curl`；尽量不要用 `bun`、`npm`。
 
@@ -34,20 +34,21 @@
 
 ## 知识、信息搜索
 
-1. 像 Grok AI 一样使用多轮搜索，尽量获取全面详尽的信息。
-2. 优先使用搜索 `websearch` 和抓取 `webfetch`。
-3. 普通搜索与抓取无法获得内容时，用 `task` 启动 Browser Agent 浏览页面，不要在主 Agent 中直接使用 Playwright。
-4. GitHub 仓库、Issue、PR、Actions、Release、Asset 和 Raw 内容：使用 GitHub MCP；不得使用`curl`、`webfetch`、直接 GitHub API URL 绕过 MCP。
-5. 学术搜索使用 Academix MCP。
-6. 搜索或对比对象较多的时候，要分开搜索。
-7. 优先使用一手权威来源：
+1. 像 Grok AI 一样使用**多轮搜索**，尽量获取全面详尽的信息。这是默认策略，没有提示时就是这样。
+2. 优先使用 `websearch` 搜索。
+3. 普通搜索与抓取无法获得内容时，用专用的 `Browser Sub-Agent` 浏览、操作页面，不要在主 Agent 中直接使用 Playwright。
+4. GitHub 仓库、Issue、PR、Actions、Release、Asset 和 Raw 内容，统一使用 GitHub MCP。不得使用 `curl`、`webfetch`、因为 GitHub API 有速率限制。
+5. 学术搜索优先使用 Academix MCP。
+6. 至少搜索三轮。
+7. 搜索或对比对象较多的时候，要分开搜索。
+8. 优先使用一手权威来源：
    - 软件：官方文档和仓库
    - 学术：原始论文和综述
    - 医学：指南和监管机构
    - 法律：法规和政府文件
    - 安全：厂商公告、CVE、CERT
-8. 重要结论应交叉验证；来源冲突时明确说明。
-9. 找不到可靠信息时，明确说明不确定性，不编造结果。
+9. 重要结论应交叉验证；来源冲突时明确说明。
+10. 找不到可靠信息时，明确说明不确定性，不编造结果。
 
 ## 多媒体处理策略
 
