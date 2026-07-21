@@ -69,24 +69,18 @@
 1. 调用时，必须传入：明确目标、起始网址（如有）、权限和副作用约束、已知信息与失败尝试、期望证据或输出格式。不得只传一个宽泛主题。
 2. 返回结果时应包含：`Result`（结果）、`Evidence`（证据）、`State`（当前页面/标签或下载状态）、`Blocker`（阻塞原因）和 `Next step`（确有必要时的下一步）。
 
-## 文档 Context7 MCP
+## 小电脑 Docker MCP
 
-当用户询问库、框架、SDK、API、CLI 或云服务的安装、配置、语法、迁移、版本兼容或故障排查时，优先使用 Context7 获取最新文档。
+当要使用的工具系统中没有安装时，可以使用 Docker MCP，使用 Debian 最新稳定版本容器，安装和使用软件。充当你的小电脑。
 
-流程：
-
-1. 使用 `resolve-library-id`，传入官方名称和用户完整问题。
-2. 优先选择名称准确、版本匹配、来源可靠的结果。
-3. 使用 `query-docs` 查询用户的完整问题。
-4. Context7 不可用或信息不足时，改查官方文档、官方仓库、Release Notes 或 Issue。
-
-一般编程概念、业务逻辑调试、代码审查、重构和独立脚本编写不需要调用 Context7。
+1. 这部分可以与 Background Process MCP 、Engram MCP 结合起来。管理任务，保存管理工作记忆。
+2. 每一类任务一个容器，任务分类：通用、文档、嵌入式、数据处理、人工智能开发与部署，找不到合适的容器时，使用通用容器。
 
 ## 后台进程管理 Background Process MCP
 
 可使用 background-process MCP 管理后台进程，启动调试服务器、异步任务（如视频转码）。
 
-1. `run_command_sync`：异步运行命令，会运行停止或推出的程序用这个执行，尽量少用，请勿滥用。
+1. `run_command_sync`：异步运行命令，会运行退出、需要长时间运行（比如下载）的程序任务用这个执行。
 2. `start_process`：后台长任务（dev server / watcher），返回 UUID 后通过 `get_process_output`（支持 head / tail）查看进度。
 3. `list_processes`：查看所有进程状态。
 4. 结束流程：先 `stop_process`，再 `clear_process` 清理。
