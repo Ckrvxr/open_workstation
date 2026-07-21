@@ -1,5 +1,57 @@
 # OpenWorkStation
 
-一个基于 OpenCode 的全能工作站，支持代码编写、文档编辑、全自动循环开发、多任务管理等功能。
+一套基于 [OpenCode](https://opencode.ai) 的 AI 工作站配置，将终端中的 AI 编程 Agent 武装成全功能开发环境。
 
-本想项目基于原则与目标驱动，而非流程驱动。
+## 能力
+
+| 能力 | 工具 |
+|---|---|
+| 代码编写与重构 | OpenCode 核心 + AGENTS.md 宪法约束 |
+| 浏览器自动化 | Playwright MCP + Browser Sub-Agent |
+| GitHub 全操作 | GitHub MCP (Copilot 接口) |
+| 学术搜索 | Academix MCP (OpenAlex / DBLP / Semantic Scholar) |
+| 持久化记忆 | Engram MCP |
+| 桌面 GUI 操作 | Open Computer Use MCP |
+| 隔离环境 | Docker MCP (Debian 容器) |
+| 后台任务 | Background Process MCP |
+| 费曼学习法 | Feynman Skill |
+| 配额监控 | opencode-quota 插件 |
+| 密钥保护 | secret-redactor 插件 |
+
+## 结构
+
+```
+.
+├── AGENTS.md           # 宪法规则、搜索/计算/工具箱策略
+├── opencode.jsonc      # MCP 服务器、插件、权限配置
+├── tui.jsonc           # 终端 UI 插件配置
+├── agents/
+│   └── browser.md      # 浏览器 Sub-Agent 定义
+├── skills/
+│   └── feynman/        # 费曼学习法技能
+├── plugins/
+│   └── engram.ts       # Engram 记忆存储插件
+├── commands/           # 自定义命令（可扩展）
+└── .gitignore
+```
+
+## 快速开始
+
+```bash
+# 克隆后复制到 OpenCode 配置目录
+cp -r . ~/.config/opencode
+
+# 确保需要环境变量（按需设置）
+export GITHUB_PERSONAL_ACCESS_TOKEN="ghp_..."
+export OPENALEX_EMAIL="your@email.com"
+```
+
+## MCP 服务器
+
+参见 `opencode.jsonc`，所有需要密钥的配置使用 `{env:VAR_NAME}` 占位符从环境变量读取，不硬编码。
+
+## 设计原则
+
+- **规则驱动，而非流程驱动** — AGENTS.md 定义边界和策略，具体执行交给 AI 判断
+- **最小泄漏** — 密钥仅通过环境变量注入，.gitignore 覆盖敏感目录
+- **模块化** — 每个 MCP 服务器、技能、子 Agent 独立文件，可按需启用/禁用
