@@ -4,4 +4,4 @@ package-lock.json
 bun.lock
 .gitignore
 .playwright-mcp
-opencode-quota
+opencode-quota/opencode-go.json
