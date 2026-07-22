@@ -13,7 +13,7 @@
 | 能力 | 工具 | 效果 |
 |---|---|---|
 | 💻 代码编写与重构 | OpenCode + AGENTS.md 宪法约束 | 超强自主代码能力 |
-| 🌐 浏览器自动化 | Playwright MCP + Browser Sub-Agent | 超强自愈浏览器使用能力 |
+| 🌐 浏览器自动化 | Playwright MCP | 超强信息检索、互联网操作能力 |
 | 🐙 GitHub 全操作 | GitHub MCP (Copilot 接口) | 不再报错，自动处理 PR/Issue  |
 | 📖 神经网络搜索 | Exa MCP | 信息实时可靠、搜索迅速，大幅减少上下文消耗 |
 | 📖 学术搜索 | Academix MCP | 查询学术论文、引文网络、权威可靠 |
@@ -32,8 +32,6 @@
 ├── AGENTS.md           # 📜 宪法规则、搜索/计算/工具箱策略
 ├── opencode.jsonc      # ⚙️ MCP 服务器、插件、权限配置
 ├── tui.jsonc           # 🖥️ 终端 UI 插件配置
-├── agents/
-│   └── browser.md      # 🕵️ 浏览器 Sub-Agent 定义
 ├── skills/
 │   └── feynman/        # 🎓 费曼学习法技能
 ├── plugins/
